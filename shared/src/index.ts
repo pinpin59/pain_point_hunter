@@ -1,5 +1,10 @@
 // Schémas Zod + types inférés
 export * from './schemas/auth.schema';
+export * from './schemas/reddit.schema';
+
+// Constantes
+export * from './constants/subreddits';
+export * from './constants/pain_keywords';
 
 // Types utilitaires génériques (pas besoin de Zod ici)
 export interface ApiResponse<T> {

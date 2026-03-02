@@ -1,6 +1,7 @@
 // Schémas Zod + types inférés
 export * from './schemas/auth.schema';
 export * from './schemas/reddit.schema';
+export * from './schemas/trustpilot.schema';
 
 // Constantes
 export * from './constants/subreddits';

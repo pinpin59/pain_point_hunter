@@ -1,10 +1,12 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Res, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOkResponse, ApiOperation, ApiProduces, ApiTags } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
 import type { Response } from 'express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RedditService } from './reddit.service';
 import { SUBREDDITS } from '@pain-point-hunter/shared';
 import { FetchSubredditsBodyDto } from './dto/reddit.dto';
+import { THROTTLE_PROFILES } from 'src/constants/throttle.constants';
 
 @ApiTags('reddit')
 @ApiBearerAuth()
@@ -13,7 +15,10 @@ import { FetchSubredditsBodyDto } from './dto/reddit.dto';
 export class RedditController {
   constructor(private readonly redditService: RedditService) {}
 
-  @ApiOperation({ summary: 'Liste des subreddits suggérés', description: 'Retourne la liste des subreddits préconfigurés à utiliser comme suggestions côté frontend.' })
+  @ApiOperation({
+    summary: 'Liste des subreddits suggérés',
+    description: 'Retourne la liste des subreddits préconfigurés à utiliser comme suggestions côté frontend.',
+  })
   @ApiOkResponse({
     description: 'Liste des subreddits disponibles',
     schema: {
@@ -30,14 +35,19 @@ export class RedditController {
 
   @ApiOperation({
     summary: 'Scraper des posts Reddit',
-    description: 'Récupère les posts hot + new + top(month) de chaque subreddit fourni, déduplique par ID, et retourne uniquement les posts dont le titre ou le contenu contient au moins un des keywords fournis.',
+    description:
+      'Récupère les posts hot + new + top(month) de chaque subreddit fourni, déduplique par ID, et retourne uniquement les posts dont le titre ou le contenu contient au moins un des keywords fournis.',
   })
   @ApiBody({
     type: FetchSubredditsBodyDto,
     examples: {
       default: {
         summary: 'Exemple standard',
-        value: { subreddits: ['SaaS', 'Entrepreneur', 'startups'], keywords: ['i hate', 'why is there no', "i'm frustrated", "j'en ai marre"], limit: 25 },
+        value: {
+          subreddits: ['SaaS'],
+          keywords: ['i hate', 'why is there no', "i'm frustrated", "j'en ai marre"],
+          limit: 25,
+        },
       },
       minimal: {
         summary: 'Minimal (limit par défaut = 25)',
@@ -65,6 +75,7 @@ export class RedditController {
       },
     },
   })
+  @Throttle({ scraping: THROTTLE_PROFILES.scraping })
   @HttpCode(HttpStatus.OK)
   @Post('posts')
   getPosts(@Body() body: FetchSubredditsBodyDto) {
@@ -73,7 +84,8 @@ export class RedditController {
 
   @ApiOperation({
     summary: 'Scraper + exporter en Excel',
-    description: 'Même logique que POST /posts mais retourne directement un fichier .xlsx téléchargeable. Un onglet global + un onglet par subreddit, triés par score.',
+    description:
+      'Même logique que POST /posts mais retourne directement un fichier .xlsx téléchargeable. Un onglet global + un onglet par subreddit, triés par score.',
   })
   @ApiBody({
     type: FetchSubredditsBodyDto,
@@ -86,6 +98,7 @@ export class RedditController {
   })
   @ApiProduces('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
   @ApiOkResponse({ description: 'Fichier Excel (.xlsx) en téléchargement' })
+  @Throttle({ scraping: THROTTLE_PROFILES.scraping })
   @HttpCode(HttpStatus.OK)
   @Post('export')
   async exportPosts(@Body() body: FetchSubredditsBodyDto, @Res() res: Response) {

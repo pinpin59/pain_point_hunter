@@ -1,0 +1,47 @@
+{
+  "layout": {
+    "appTitle": "SaaS Insights",
+    "redditScraper": "Reddit Scraper",
+    "reviewsScraper": "Reviews Scraper",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "loginPage": {
+    "welcomeBack": "Bon retour",
+    "loginToContinue": "Connectez-vous pour continuer vers SaaS Insights.",
+    "continueWithGoogle": "Continuer avec Google",
+    "orCreateAccount": "ou créer un compte",
+    "emailPlaceholder": "nom@entreprise.com",
+    "continueWithEmail": "Continuer avec l'email"
+  },
+  "redditFinder": {
+    "redditTitle": "Découvrez les vrais problèmes de vos futurs clients",
+    "redditDesc": "Analysez les subreddits pertinents pour identifier les \"pain points\" récurrents et valider vos idées de produits.",
+    "targetSubreddits": "Subreddits cibles",
+    "subredditsPlaceholder": "Ex: r/SaaS, r/Entrepreneur...",
+    "painKeywords": "Pain Keywords (Mots-clés de douleur)",
+    "keywordsPlaceholder": "Ex: how do I get more clients, I hate when...",
+    "generateReport": "Générer le rapport d'analyse",
+    "generating": "Analyse en cours...",
+    "pressEnter": "Appuyez sur Entrée pour ajouter un élément.",
+    "errorSubreddit": "Veuillez ajouter au moins un subreddit.",
+    "errorKeyword": "Veuillez ajouter au moins un mot-clé (pain keyword).",
+    "successReport": "Rapport généré avec succès ! (Simulation)"
+  },
+  "reviewsFinder": {
+    "reviewsTitle": "Analysez les avis de vos concurrents",
+    "reviewsDesc": "Récupérez et analysez les avis clients selon leur note pour identifier les forces et faiblesses du marché.",
+    "companies": "Entreprises / Sites Web",
+    "companiesPlaceholder": "Ex: airbnb.fr, gymshark.com...",
+    "starsToScrape": "Notes à récupérer (Étoiles)",
+    "launchScraping": "Lancer l'extraction des avis",
+    "scraping": "Extraction en cours...",
+    "selectStarsDesc": "Sélectionnez une ou plusieurs notes pour filtrer les avis à récupérer.",
+    "errorCompany": "Veuillez ajouter au moins une entreprise ou un site web.",
+    "errorStar": "Veuillez sélectionner au moins une note (étoile) à récupérer.",
+    "successScraping": "Extraction des avis lancée avec succès ! (Simulation)"
+  },
+  "general": {
+    "added": "ajouté(s)"
+  }
+}

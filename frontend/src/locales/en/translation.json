@@ -1,0 +1,47 @@
+{
+  "layout": {
+    "appTitle": "SaaS Insights",
+    "redditScraper": "Reddit Scraper",
+    "reviewsScraper": "Reviews Scraper",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "loginPage": {
+    "welcomeBack": "Welcome back",
+    "loginToContinue": "Log in to continue to SaaS Insights.",
+    "continueWithGoogle": "Continue with Google",
+    "orCreateAccount": "or create an account",
+    "emailPlaceholder": "name@company.com",
+    "continueWithEmail": "Continue with email"
+  },
+  "redditFinder": {
+    "redditTitle": "Discover the real problems of your future clients",
+    "redditDesc": "Analyze relevant subreddits to identify recurring pain points and validate your product ideas.",
+    "targetSubreddits": "Target Subreddits",
+    "subredditsPlaceholder": "Ex: r/SaaS, r/Entrepreneur...",
+    "painKeywords": "Pain Keywords",
+    "keywordsPlaceholder": "Ex: how do I get more clients, I hate when...",
+    "generateReport": "Generate analysis report",
+    "generating": "Analyzing...",
+    "pressEnter": "Press Enter to add an item.",
+    "errorSubreddit": "Please add at least one subreddit.",
+    "errorKeyword": "Please add at least one pain keyword.",
+    "successReport": "Report generated successfully! (Simulation)"
+  },
+  "reviewsFinder": {
+    "reviewsTitle": "Analyze your competitors' reviews",
+    "reviewsDesc": "Retrieve and analyze customer reviews by rating to identify market strengths and weaknesses.",
+    "companies": "Companies / Websites",
+    "companiesPlaceholder": "Ex: airbnb.fr, gymshark.com...",
+    "starsToScrape": "Ratings to scrape (Stars)",
+    "launchScraping": "Launch reviews extraction",
+    "scraping": "Extracting...",
+    "selectStarsDesc": "Select one or more ratings to filter the reviews to retrieve.",
+    "errorCompany": "Please add at least one company or website.",
+    "errorStar": "Please select at least one rating (star) to retrieve.",
+    "successScraping": "Reviews extraction launched successfully! (Simulation)"
+  },
+  "general": {
+    "added": "added"
+  }
+}
